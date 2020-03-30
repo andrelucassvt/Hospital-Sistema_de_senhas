@@ -113,27 +113,25 @@ public class Senhas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+	Filas normal = new Filas();
 	
-	Fila filaPreferencial = new Fila();
-	Fila filaComum = new Fila();
     private void AnormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnormalActionPerformed
         
-        String senha = filaComum.adicionar("AN");
-        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
-        
+        int senha = normal.adicionarNormal();
+        JOptionPane.showMessageDialog(null,"Imprimindo senha!!\n"+"AN"+ senha );
     }//GEN-LAST:event_AnormalActionPerformed
 
     private void ApreferencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApreferencialActionPerformed
 
-        String senha = filaPreferencial.adicionar("AP");
-        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
+        int senha = normal.adicionarPreferencia();
+        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" +"AP"+ senha);
         
     }//GEN-LAST:event_ApreferencialActionPerformed
 
     private void MconsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MconsultasActionPerformed
 
-        String senha = filaComum.adicionar("MC");
-        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
+        int senha = normal.adicionarNormal();
+        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n"+ "MC"+ senha);
 
     }//GEN-LAST:event_MconsultasActionPerformed
 
