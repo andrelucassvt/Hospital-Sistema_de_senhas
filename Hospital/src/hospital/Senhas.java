@@ -114,38 +114,26 @@ public class Senhas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 	
-    int tamanho = 0;
-	int tamanho2 = 0;
-	int tamanho3 = 0;
+	Fila filaPreferencial = new Fila();
+	Fila filaComum = new Fila();
     private void AnormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnormalActionPerformed
         
-        Numeros n1 = new Numeros();
-
-        tamanho++;
-        n1.gerarSenhaNormal(tamanho);
-        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nAN" + n1.getNum());
-
-        
-       
+        String senha = filaComum.adicionar("AN");
+        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
         
     }//GEN-LAST:event_AnormalActionPerformed
 
     private void ApreferencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApreferencialActionPerformed
-        // TODO add your handling code here:
-        Numeros n1 = new Numeros();
-        
-        tamanho2++;
-        n1.gerarSenhaNormal(tamanho2);
-        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nAP" + n1.getNum());
+
+        String senha = filaPreferencial.adicionar("AP");
+        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
         
     }//GEN-LAST:event_ApreferencialActionPerformed
 
     private void MconsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MconsultasActionPerformed
-        // TODO add your handling code here:
-        Numeros n1 = new Numeros();
-        tamanho3++;
-        n1.gerarSenhaNormal(tamanho3);
-        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nMC" + n1.getNum());
+
+        String senha = filaComum.adicionar("MC");
+        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
 
     }//GEN-LAST:event_MconsultasActionPerformed
 
