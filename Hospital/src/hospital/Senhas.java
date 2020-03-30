@@ -113,24 +113,18 @@ public class Senhas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-int quantidadeDeClicks = 0;
-int tamanho = 0;
-int tamanho2 = 0;
-int tamanho3 = 0;
+	
+    int tamanho = 0;
+	int tamanho2 = 0;
+	int tamanho3 = 0;
     private void AnormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnormalActionPerformed
         
         Numeros n1 = new Numeros();
-        if(quantidadeDeClicks == 0){
-            tamanho++;
-            quantidadeDeClicks++;
-            n1.gerarSenhaNormal(tamanho);
-            JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nAN" + n1.getNum());
-        }else{
-            tamanho++;
-            quantidadeDeClicks =0;
-            n1.gerarSenhaNormal(tamanho);
-            JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nAN" + n1.getNum());
-        }
+
+        tamanho++;
+        n1.gerarSenhaNormal(tamanho);
+        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nAN" + n1.getNum());
+
         
        
         
@@ -139,34 +133,20 @@ int tamanho3 = 0;
     private void ApreferencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApreferencialActionPerformed
         // TODO add your handling code here:
         Numeros n1 = new Numeros();
-        if(quantidadeDeClicks == 0){
-            tamanho2++;
-            quantidadeDeClicks++;
-            n1.gerarSenhaNormal(tamanho2);
-            JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nAP" + n1.getNum());
-        }else{
-            tamanho2++;
-            quantidadeDeClicks =0;
-            n1.gerarSenhaNormal(tamanho2);
-            JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nAP" + n1.getNum());
-        }
+        
+        tamanho2++;
+        n1.gerarSenhaNormal(tamanho2);
+        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nAP" + n1.getNum());
         
     }//GEN-LAST:event_ApreferencialActionPerformed
 
     private void MconsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MconsultasActionPerformed
         // TODO add your handling code here:
         Numeros n1 = new Numeros();
-        if(quantidadeDeClicks == 0){
-            tamanho3++;
-            quantidadeDeClicks++;
-            n1.gerarSenhaNormal(tamanho3);
-            JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nMC" + n1.getNum());
-        }else{
-            tamanho3++;
-            quantidadeDeClicks =0;
-            n1.gerarSenhaNormal(tamanho3);
-            JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nMC" + n1.getNum());
-        }
+        tamanho3++;
+        n1.gerarSenhaNormal(tamanho3);
+        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\nMC" + n1.getNum());
+
     }//GEN-LAST:event_MconsultasActionPerformed
 
     /**
