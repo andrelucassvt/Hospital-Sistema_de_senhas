@@ -5,7 +5,13 @@
  */
 package hospital;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -224,7 +230,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-termos-e-condiÃ§Ãµes-20.png"))); // NOI18N
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-termos-e-condições-20.png"))); // NOI18N
         jMenu3.setText("Menu");
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-sair-20.png"))); // NOI18N
@@ -233,7 +239,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-manual-do-usuÃ¡rio-20.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-manual-do-usuário-20.png"))); // NOI18N
         jMenu2.setText("Funcionario");
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-guardar-todos-20.png"))); // NOI18N
@@ -322,15 +328,60 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void BotaoFilaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFilaNormalActionPerformed
-        // TODO add your handling code here:
+        try {
+
+        	URL url = new URL("http://localhost:3333/chamar/normal");
+        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        	conn.setRequestMethod("GET");
+        	conn.setRequestProperty("Accept", "application/json");
+
+        	if (conn.getResponseCode() != 200) {
+        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+        	}
+
+        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+        	String senha;
+        	while ((senha = br.readLine()) != null) {
+        		labelFilaNormal.setText(senha);
+        	}
+
+        	conn.disconnect();
+
+        } catch (Exception e) {
+
+        	e.printStackTrace();
+        }
     }//GEN-LAST:event_BotaoFilaNormalActionPerformed
 
     private void BotaoPrioridadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoPrioridadeActionPerformed
         // TODO add your handling code here:
-        
-       String senhasPreferencial = filas.filaPreferencial.peek();
-        
-       labelPrioridade.setText(senhasPreferencial);
+    	
+        try {
+
+        	URL url = new URL("http://localhost:3333/chamar/prioridade");
+        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        	conn.setRequestMethod("GET");
+        	conn.setRequestProperty("Accept", "application/json");
+
+        	if (conn.getResponseCode() != 200) {
+        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+        	}
+
+        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+        	String senhasPreferencial;
+        	while ((senhasPreferencial = br.readLine()) != null) {
+        		labelPrioridade.setText(senhasPreferencial);
+        	}
+
+        	conn.disconnect();
+
+        } catch (Exception e) {
+
+        	e.printStackTrace();
+        }
+       
     }//GEN-LAST:event_BotaoPrioridadeActionPerformed
 
     /**

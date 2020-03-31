@@ -7,6 +7,11 @@ package hospital;
 
 import javax.swing.JOptionPane;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /**
  *
  * @author andre
@@ -117,21 +122,95 @@ public class Senhas extends javax.swing.JFrame {
 	
     private void AnormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnormalActionPerformed
         
-        int senha = normal.adicionarNormal();
-        JOptionPane.showMessageDialog(null,"Imprimindo senha!!\n"+"AN"+ senha );
+        //int senha = normal.adicionarNormal();
+        
+        try {
+
+        	URL url = new URL("http://localhost:3333/adicionar/normal");
+        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        	conn.setRequestMethod("GET");
+        	conn.setRequestProperty("Accept", "application/json");
+
+        	if (conn.getResponseCode() != 200) {
+        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+        	}
+
+        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+        	String senha;
+        	while ((senha = br.readLine()) != null) {
+        		JOptionPane.showMessageDialog(null,"Imprimindo senha!!\n"+"AN"+ senha );
+        	}
+
+        	conn.disconnect();
+
+        } catch (Exception e) {
+
+        	e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_AnormalActionPerformed
 
     private void ApreferencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApreferencialActionPerformed
 
-        int senha = normal.adicionarPreferencia();
-        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" +"AP"+ senha);
+        //int senha = normal.adicionarPreferencia();
+        
+        
+        try {
+
+        	URL url = new URL("http://localhost:3333/adicionar/prioridade");
+        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        	conn.setRequestMethod("GET");
+        	conn.setRequestProperty("Accept", "application/json");
+
+        	if (conn.getResponseCode() != 200) {
+        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+        	}
+
+        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+        	String senha;
+        	while ((senha = br.readLine()) != null) {
+        		JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" +"AP"+ senha);
+        	}
+
+        	conn.disconnect();
+
+        } catch (Exception e) {
+
+        	e.printStackTrace();
+        }
+        
+        
         
     }//GEN-LAST:event_ApreferencialActionPerformed
 
     private void MconsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MconsultasActionPerformed
 
-        int senha = normal.adicionarNormal();
-        JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n"+ "MC"+ senha);
+        try {
+
+        	URL url = new URL("http://localhost:3333/adicionar/consulta");
+        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        	conn.setRequestMethod("GET");
+        	conn.setRequestProperty("Accept", "application/json");
+
+        	if (conn.getResponseCode() != 200) {
+        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+        	}
+
+        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+        	String senha;
+        	while ((senha = br.readLine()) != null) {
+        		JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n"+ "MC"+ senha);
+        	}
+
+        	conn.disconnect();
+
+        } catch (Exception e) {
+
+        	e.printStackTrace();
+        }
 
     }//GEN-LAST:event_MconsultasActionPerformed
 
