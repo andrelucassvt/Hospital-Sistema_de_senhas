@@ -12,8 +12,8 @@ class Fila{
         this.calda = null;
     }
 
-    add(){
-        let novoNo = new NoFila(this.senhaAtual, null);
+    add(modalidade){
+        let novoNo = new NoFila(this.senhaAtual+modalidade, null);
 
         this.senhaAtual++;
 
