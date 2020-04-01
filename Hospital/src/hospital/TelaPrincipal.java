@@ -87,8 +87,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
-                .addComponent(labelPrioridade)
+                .addGap(81, 81, 81)
+                .addComponent(labelPrioridade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(74, 74, 74))
         );
         jPanel2Layout.setVerticalGroup(
@@ -98,7 +98,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
                 .addComponent(labelPrioridade)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -122,8 +122,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(74, 74, 74)
-                        .addComponent(labelFilaNormal)))
-                .addContainerGap(75, Short.MAX_VALUE))
+                        .addComponent(labelFilaNormal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(75, 75, 75))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +132,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(35, 35, 35)
                 .addComponent(labelFilaNormal)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         BotaoPrioridade.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -185,10 +185,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabel6)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(29, Short.MAX_VALUE)
+                        .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
                             .addComponent(BotaoPrioridade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BotaoFilaNormal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
@@ -199,19 +199,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(52, 52, 52)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addGap(45, 45, 45)
                 .addComponent(BotaoPrioridade, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel6)
                 .addGap(13, 13, 13)
-                .addComponent(BotaoFilaNormal, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(BotaoFilaNormal, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, Short.MAX_VALUE)
+                .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(13, 13, 13))
         );
 
@@ -230,19 +230,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-termos-e-condicoes-20.png"))); // NOI18N
         jMenu3.setText("Menu");
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-sair-20.png"))); // NOI18N
         jMenuItem1.setText("Sair");
         jMenu3.add(jMenuItem1);
 
         jMenuBar1.add(jMenu3);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-manual-do-usuario-20.png"))); // NOI18N
         jMenu2.setText("Funcionario");
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-guardar-todos-20.png"))); // NOI18N
         jMenuItem2.setText("Cadastrar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,7 +247,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
-        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/lista.png"))); // NOI18N
         jMenuItem4.setText("Lista");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,10 +257,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/business_application_addmale_useradd_insert_add_user_client_2312.png"))); // NOI18N
         jMenu1.setText("Cliente");
 
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-guardar-todos-20.png"))); // NOI18N
         jMenuItem3.setText("Cadastrar");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,7 +267,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
-        jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/lista.png"))); // NOI18N
         jMenuItem5.setText("Lista");
         jMenu1.add(jMenuItem5);
 

@@ -5,6 +5,7 @@
  */
 package hospital;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 /**
  *
@@ -76,6 +77,12 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jLabel5.setText("Telefone");
 
@@ -244,7 +251,7 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        JOptionPane.showInternalMessageDialog(null, "Salvo");
+        JOptionPane.showInternalMessageDialog(null, "Cadastrado");
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -263,6 +270,15 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
     private void cbsexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbsexoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbsexoActionPerformed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            
+            
+            JOptionPane.showMessageDialog(null, "Cadastrado");
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
