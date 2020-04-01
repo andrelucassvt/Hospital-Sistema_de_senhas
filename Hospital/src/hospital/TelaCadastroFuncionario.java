@@ -67,7 +67,7 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Atendente", "Médico(a)", "Enfermeiro(a)", "Limpeza", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Atendente", "Enfermeiro(a)", "Limpeza", "Médico (Clínico Geral)", "Médico (Oftamologista)", "Médico (Pediatra)", "Médico (Fisioterapeuta)", "Médico (Cirurgião plástico)" }));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Cargo:");
@@ -96,7 +96,7 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.LEADING))
