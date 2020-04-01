@@ -126,7 +126,7 @@ public class Senhas extends javax.swing.JFrame {
         
         try {
 
-        	URL url = new URL("http://localhost:3333/adicionar/normal");
+        	URL url = new URL("http://localhost:3333/adicionar/AN");
         	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         	conn.setRequestMethod("GET");
         	conn.setRequestProperty("Accept", "application/json");
@@ -139,7 +139,7 @@ public class Senhas extends javax.swing.JFrame {
 
         	String senha;
         	while ((senha = br.readLine()) != null) {
-        		JOptionPane.showMessageDialog(null,"Imprimindo senha!!\n"+"AN"+ senha );
+        		JOptionPane.showMessageDialog(null,"Imprimindo senha!!\n"+senha );
         	}
 
         	conn.disconnect();
@@ -158,7 +158,7 @@ public class Senhas extends javax.swing.JFrame {
         
         try {
 
-        	URL url = new URL("http://localhost:3333/adicionar/prioridade");
+        	URL url = new URL("http://localhost:3333/adicionar/AP");
         	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         	conn.setRequestMethod("GET");
         	conn.setRequestProperty("Accept", "application/json");
@@ -171,7 +171,7 @@ public class Senhas extends javax.swing.JFrame {
 
         	String senha;
         	while ((senha = br.readLine()) != null) {
-        		JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" +"AP"+ senha);
+        		JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
         	}
 
         	conn.disconnect();
@@ -189,7 +189,7 @@ public class Senhas extends javax.swing.JFrame {
 
         try {
 
-        	URL url = new URL("http://localhost:3333/adicionar/consulta");
+        	URL url = new URL("http://localhost:3333/adicionar/MC");
         	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         	conn.setRequestMethod("GET");
         	conn.setRequestProperty("Accept", "application/json");
@@ -202,7 +202,7 @@ public class Senhas extends javax.swing.JFrame {
 
         	String senha;
         	while ((senha = br.readLine()) != null) {
-        		JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n"+ "MC"+ senha);
+        		JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n"+ senha);
         	}
 
         	conn.disconnect();
