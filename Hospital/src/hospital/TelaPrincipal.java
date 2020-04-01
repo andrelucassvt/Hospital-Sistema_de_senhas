@@ -230,7 +230,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-termos-e-condições-20.png"))); // NOI18N
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-termos-e-condiÃ§Ãµes-20.png"))); // NOI18N
         jMenu3.setText("Menu");
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-sair-20.png"))); // NOI18N
@@ -239,7 +239,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-manual-do-usuário-20.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-manual-do-usuÃ¡rio-20.png"))); // NOI18N
         jMenu2.setText("Funcionario");
 
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icons8-guardar-todos-20.png"))); // NOI18N
@@ -359,7 +359,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     	
         try {
 
-        	URL url = new URL("http://localhost:3333/chamar/prioridade");
+        	URL url = new URL("http://localhost:3333/chamar/AP");
         	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         	conn.setRequestMethod("GET");
         	conn.setRequestProperty("Accept", "application/json");
