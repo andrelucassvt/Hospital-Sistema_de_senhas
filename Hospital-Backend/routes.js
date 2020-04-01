@@ -12,10 +12,10 @@ routes.get('/adicionar/:modalidade', (request, response) => {
 
     let senha = null;
 
-    if(modalidade ==  'prioridade'){
-        senha = filaPrioridade.add();
+    if(modalidade ==  'AP'){
+        senha = filaPrioridade.add(modalidade);
     } else {
-        senha = filaNormal.add();
+        senha = filaNormal.add(modalidade);
     }
 
     response.json( senha );
@@ -27,7 +27,7 @@ routes.get('/chamar/:modalidade', (request, response) => {
     
     let senhaChamada = null;
 
-    if(modalidade ==  'prioridade'){
+    if(modalidade ==  'AP'){
         senhaChamada = filaPrioridade.remove();
     } else {
         senhaChamada = filaNormal.remove();
