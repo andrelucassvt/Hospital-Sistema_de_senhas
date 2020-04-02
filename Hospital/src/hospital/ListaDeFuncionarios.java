@@ -6,20 +6,28 @@
 package hospital;
 
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author andre
  */
 public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
-
+    TelaCadastroFuncionario t1 = new TelaCadastroFuncionario();
     /**
      * Creates new form ListaDeFuncionarios
      */
+    
+    
     public ListaDeFuncionarios() {
         initComponents();
+        // TODO add your handling code here:
+        DefaultTableModel dpcadastro = (DefaultTableModel) tabelaFuncionario.getModel();
+        Object dados[] ={t1.getNome(),t1.getCpf(),t1.getCargo()};
+        dpcadastro.addRow(dados);
+       
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,7 +51,15 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
             new String [] {
                 "Nome", "CPF", "Cargo"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tabelaFuncionario);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -56,7 +72,7 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,13 +100,8 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JTable getTabelaFuncionario() {
-        return tabelaFuncionario;
-    }
-
-    public void setTabelaFuncionario(JTable tabelaFuncionario) {
-        this.tabelaFuncionario = tabelaFuncionario;
-    }
+        
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

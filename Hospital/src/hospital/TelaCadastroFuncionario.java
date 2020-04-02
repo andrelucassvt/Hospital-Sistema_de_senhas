@@ -6,7 +6,9 @@
 package hospital;
 
 import java.awt.event.KeyEvent;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  * @author andre
  */
 public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
-
+   
     /**
      * Creates new form TelaCadastroFuncionario
      */
@@ -153,19 +155,50 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    ListaDeFuncionarios listaf = new ListaDeFuncionarios();
+  
+    private String nome;
+    private String cpf;
+    private String cargo;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         
         
-        DefaultTableModel dtprodutos = (DefaultTableModel) listaf.getTabelaFuncionario().getModel();
-        Object [] dados = {txtnome.getText(),txtcpf.getText(),cbcargo.getSelectedItem()};
-        dtprodutos.addRow(dados);
+        this.setNome(this.txtnome.getText());
+        this.setCpf(this.txtcpf.getText());
+        this.setCargo((String) this.cbcargo.getSelectedItem());
         
         JOptionPane.showMessageDialog(null, "Cadastrado");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+    
 
+    public String getNome() {
+        return nome;
+    }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbcargo;
     private javax.swing.JButton jButton1;
