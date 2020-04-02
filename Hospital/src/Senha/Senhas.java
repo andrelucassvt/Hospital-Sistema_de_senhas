@@ -118,99 +118,92 @@ public class Senhas extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-	
+
     private void AnormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnormalActionPerformed
-        
+
         //int senha = normal.adicionarNormal();
-        
         try {
 
-        	URL url = new URL("http://localhost:3333/adicionar/AN");
-        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        	conn.setRequestMethod("GET");
-        	conn.setRequestProperty("Accept", "application/json");
+            URL url = new URL("http://localhost:3333/adicionar/AN");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
 
-        	if (conn.getResponseCode() != 200) {
-        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
-        	}
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+            }
 
-        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-        	String senha;
-        	while ((senha = br.readLine()) != null) {
-        		JOptionPane.showMessageDialog(null,"Imprimindo senha!!\n"+senha );
-        	}
+            String senha;
+            while ((senha = br.readLine()) != null) {
+                JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
+            }
 
-        	conn.disconnect();
+            conn.disconnect();
 
         } catch (Exception e) {
-
-        	e.printStackTrace();
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_AnormalActionPerformed
 
     private void ApreferencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApreferencialActionPerformed
 
         //int senha = normal.adicionarPreferencia();
-        
-        
         try {
 
-        	URL url = new URL("http://localhost:3333/adicionar/AP");
-        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        	conn.setRequestMethod("GET");
-        	conn.setRequestProperty("Accept", "application/json");
+            URL url = new URL("http://localhost:3333/adicionar/AP");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
 
-        	if (conn.getResponseCode() != 200) {
-        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
-        	}
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+            }
 
-        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-        	String senha;
-        	while ((senha = br.readLine()) != null) {
-        		JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
-        	}
+            String senha;
+            while ((senha = br.readLine()) != null) {
+                JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
+            }
 
-        	conn.disconnect();
+            conn.disconnect();
 
         } catch (Exception e) {
-
-        	e.printStackTrace();
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
-        
     }//GEN-LAST:event_ApreferencialActionPerformed
 
     private void MconsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MconsultasActionPerformed
 
         try {
 
-        	URL url = new URL("http://localhost:3333/adicionar/MC");
-        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        	conn.setRequestMethod("GET");
-        	conn.setRequestProperty("Accept", "application/json");
+            URL url = new URL("http://localhost:3333/adicionar/MC");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
 
-        	if (conn.getResponseCode() != 200) {
-        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
-        	}
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+            }
 
-        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-        	String senha;
-        	while ((senha = br.readLine()) != null) {
-        		JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n"+ senha);
-        	}
+            String senha;
+            while ((senha = br.readLine()) != null) {
+                JOptionPane.showMessageDialog(null, "Imprimindo senha!!\n" + senha);
+            }
 
-        	conn.disconnect();
+            conn.disconnect();
 
         } catch (Exception e) {
-
-        	e.printStackTrace();
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_MconsultasActionPerformed
 
     /**

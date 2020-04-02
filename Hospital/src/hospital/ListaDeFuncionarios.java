@@ -5,29 +5,29 @@
  */
 package hospital;
 
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import models.Funcionario;
 
 /**
  *
  * @author andre
  */
 public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
-    TelaCadastroFuncionario t1 = new TelaCadastroFuncionario();
+
+    private static final long serialVersionUID = 5271339365875908734L;
     /**
      * Creates new form ListaDeFuncionarios
      */
-    
-    
     public ListaDeFuncionarios() {
         initComponents();
-        // TODO add your handling code here:
-        DefaultTableModel dpcadastro = (DefaultTableModel) tabelaFuncionario.getModel();
-        Object dados[] ={t1.getNome(),t1.getCpf(),t1.getCargo()};
-        dpcadastro.addRow(dados);
-       
     }
    
+    public void addFuncionario(Funcionario funcionario){
+        DefaultTableModel dpcadastro = (DefaultTableModel) tabelaFuncionario.getModel();
+        Object dados[] ={funcionario.getNome(),funcionario.getCpf(),funcionario.getCargo()};
+        dpcadastro.addRow(dados);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

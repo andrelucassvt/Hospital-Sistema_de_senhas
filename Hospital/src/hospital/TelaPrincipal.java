@@ -12,8 +12,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 
 /**
  *
@@ -21,13 +23,44 @@ import javax.swing.JOptionPane;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
+    private static final long serialVersionUID = 671394786913475712L;
+
+    private TelaCadastroFuncionario telaCadUser;
+    private TelaCadastroCliente telacadCliente;
+    private ListaDeFuncionarios listaFuncionarios;
+
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
         initComponents();
-        
-        
+    }
+
+    private InternalFrameListener getInternalFrameControl() {
+        return new InternalFrameAdapter() {
+            @Override
+            public void internalFrameClosed(InternalFrameEvent event) {
+                if (event.getInternalFrame() instanceof TelaCadastroCliente) {
+                    telaCadUser = null;
+                } else if (event.getInternalFrame() instanceof TelaCadastroFuncionario) {
+                    telaCadUser = null;
+                } else if (event.getInternalFrame() instanceof ListaDeFuncionarios) {
+                    listaFuncionarios = null;
+                }
+            }
+        };
+    }
+
+    public TelaCadastroFuncionario getTelaCadUser() {
+        return telaCadUser;
+    }
+
+    public TelaCadastroCliente getTelacadCliente() {
+        return telacadCliente;
+    }
+
+    public ListaDeFuncionarios getListaFuncionarios() {
+        return listaFuncionarios;
     }
 
     /**
@@ -39,7 +72,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanePrincipal = new javax.swing.JDesktopPane();
+        panePrincipal = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -79,7 +112,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setTitle("Tela principal");
         setExtendedState(MAXIMIZED_BOTH);
 
-        PanePrincipal.setAutoscrolls(true);
+        panePrincipal.setAutoscrolls(true);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setToolTipText("");
@@ -378,20 +411,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        PanePrincipal.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        PanePrincipal.setLayer(jPanel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panePrincipal.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        panePrincipal.setLayer(jPanel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout PanePrincipalLayout = new javax.swing.GroupLayout(PanePrincipal);
-        PanePrincipal.setLayout(PanePrincipalLayout);
-        PanePrincipalLayout.setHorizontalGroup(
-            PanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanePrincipalLayout.createSequentialGroup()
+        javax.swing.GroupLayout panePrincipalLayout = new javax.swing.GroupLayout(panePrincipal);
+        panePrincipal.setLayout(panePrincipalLayout);
+        panePrincipalLayout.setHorizontalGroup(
+            panePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panePrincipalLayout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        PanePrincipalLayout.setVerticalGroup(
-            PanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panePrincipalLayout.setVerticalGroup(
+            panePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -445,116 +478,112 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(PanePrincipal)
+                .addComponent(panePrincipal)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(PanePrincipal)
+                .addComponent(panePrincipal)
                 .addGap(0, 0, 0))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-   
+
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        
-        
-        TelaCadastroFuncionario TelaCadUser = new TelaCadastroFuncionario();
-        PanePrincipal.add(TelaCadUser);
-        TelaCadUser.setVisible(true);
-        
-        
+        telaCadUser = new TelaCadastroFuncionario(this);
+        telaCadUser.addInternalFrameListener(getInternalFrameControl());
+        panePrincipal.add(telaCadUser);
+        telaCadUser.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        TelaCadastroCliente TelacadCliente = new TelaCadastroCliente();
-        PanePrincipal.add(TelacadCliente);
-        TelacadCliente.setVisible(true);
-        
-        
-        
+        telacadCliente = new TelaCadastroCliente();
+        telacadCliente.addInternalFrameListener(getInternalFrameControl());
+        panePrincipal.add(telacadCliente);
+        telacadCliente.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
-        ListaDeFuncionarios l1 = new ListaDeFuncionarios();
-        PanePrincipal.add(l1);
-        l1.setVisible(true);
+        listaFuncionarios = new ListaDeFuncionarios();
+        listaFuncionarios.addInternalFrameListener(getInternalFrameControl());
+        panePrincipal.add(listaFuncionarios);
+        listaFuncionarios.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void BotaoFilaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoFilaNormalActionPerformed
         try {
 
-        	URL url = new URL("http://localhost:3333/chamar/normal");
-        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        	conn.setRequestMethod("GET");
-        	conn.setRequestProperty("Accept", "application/json");
+            URL url = new URL("http://localhost:3333/chamar/normal");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
 
-        	if (conn.getResponseCode() != 200) {
-        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
-        	}
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+            }
 
-        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-        	String senha;
-        	while ((senha = br.readLine()) != null) {
-        		labelFilaNormal.setText(senha);
-        	}
+            String senha;
+            while ((senha = br.readLine()) != null) {
+                labelFilaNormal.setText(senha);
+            }
 
-        	conn.disconnect();
+            conn.disconnect();
 
         } catch (Exception e) {
-
-        	e.printStackTrace();
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BotaoFilaNormalActionPerformed
 
     private void BotaoPrioridadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoPrioridadeActionPerformed
         // TODO add your handling code here:
-    	
+
         try {
 
-        	URL url = new URL("http://localhost:3333/chamar/AP");
-        	HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        	conn.setRequestMethod("GET");
-        	conn.setRequestProperty("Accept", "application/json");
+            URL url = new URL("http://localhost:3333/chamar/AP");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
 
-        	if (conn.getResponseCode() != 200) {
-        		throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
-        	}
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Erro ao acessar o servico : " + conn.getResponseCode());
+            }
 
-        	BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+            BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
-        	String senhasPreferencial;
-        	while ((senhasPreferencial = br.readLine()) != null) {
-        		labelPrioridade.setText(senhasPreferencial);
-        	}
+            String senhasPreferencial;
+            while ((senhasPreferencial = br.readLine()) != null) {
+                labelPrioridade.setText(senhasPreferencial);
+            }
 
-        	conn.disconnect();
+            conn.disconnect();
 
         } catch (Exception e) {
-
-        	e.printStackTrace();
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_BotaoPrioridadeActionPerformed
     int quantidadeDeClics = 0;
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
-        
-        if(quantidadeDeClics == 0){
+
+        if (quantidadeDeClics == 0) {
             guiche.setForeground(Color.red);
             guiche.setText("Ocupado");
             quantidadeDeClics++;
-        }else{
+        } else {
             guiche.setText("Livre");
             guiche.setForeground(Color.BLUE);
-            quantidadeDeClics =0;
+            quantidadeDeClics = 0;
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
@@ -565,9 +594,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jFormattedTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyPressed
         // TODO add your handling code here:
-        
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
             JOptionPane.showMessageDialog(null, "Cadastrado");
         }
     }//GEN-LAST:event_jFormattedTextField1KeyPressed
@@ -611,7 +640,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoFilaNormal;
     private javax.swing.JButton BotaoPrioridade;
-    private javax.swing.JDesktopPane PanePrincipal;
     private javax.swing.JLabel guiche;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -644,5 +672,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel labelFilaNormal;
     private javax.swing.JLabel labelPrioridade;
+    private javax.swing.JDesktopPane panePrincipal;
     // End of variables declaration//GEN-END:variables
 }
