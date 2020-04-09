@@ -6,7 +6,6 @@
 package hospital;
 
 import javax.swing.table.DefaultTableModel;
-import models.Funcionario;
 
 /**
  *
@@ -14,7 +13,6 @@ import models.Funcionario;
  */
 public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
 
-    private static final long serialVersionUID = 5271339365875908734L;
     /**
      * Creates new form ListaDeFuncionarios
      */
@@ -22,11 +20,7 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
         initComponents();
     }
    
-    public void addFuncionario(Funcionario funcionario){
-        DefaultTableModel dpcadastro = (DefaultTableModel) tabelaFuncionario.getModel();
-        Object dados[] ={funcionario.getNome(),funcionario.getCpf(),funcionario.getCargo()};
-        dpcadastro.addRow(dados);
-    }
+  
     
     /**
      * This method is called from within the constructor to initialize the form.

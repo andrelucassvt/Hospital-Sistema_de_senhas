@@ -6,7 +6,7 @@
 package hospital;
 
 import javax.swing.JOptionPane;
-import models.Funcionario;
+
 
 /**
  *
@@ -14,8 +14,7 @@ import models.Funcionario;
  */
 public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
 
-    private static final long serialVersionUID = 5828942242248032786L;
-    private final TelaPrincipal telaPrincipal;
+   
 
     /**
      * Creates new form TelaCadastroFuncionario
@@ -24,29 +23,10 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
      */
     public TelaCadastroFuncionario(TelaPrincipal telaPrincipal) {
         initComponents();
-        this.telaPrincipal = telaPrincipal;
+        
     }
 
-    public Funcionario getFuncionario() {
-        return new Funcionario(txtnome.getText(),
-                txtcpf.getText(),
-                cbcargo.getSelectedItem().toString(),
-                txtEmail.getText(),
-                txtCelular.getText()
-        );
-    }
-
-    public void setFuncionario(Funcionario funcionario) {
-        txtnome.setText(funcionario.getNome());
-        txtcpf.setText(funcionario.getCpf());
-        cbcargo.setSelectedItem(funcionario.getCargo());
-    }
-
-    public void clear() {
-        txtnome.setText("");
-        txtcpf.setText("");
-        cbcargo.setSelectedIndex(-1);
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,14 +161,7 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
-        ListaDeFuncionarios listaFuncionarios = telaPrincipal.getListaFuncionarios();
-        if (listaFuncionarios != null) {
-            listaFuncionarios.addFuncionario(getFuncionario());
-            clear();
-            JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao tentar realizar cadastro!", "Erro de Cadastro", JOptionPane.ERROR_MESSAGE);
-        }
+         
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
