@@ -9,8 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -22,29 +20,26 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author andre
  */
 @Entity
-@Table(name = "cadastrofuncionario")
+@Table(name = "cadfuncionario")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cadastrofuncionario.findAll", query = "SELECT c FROM Cadastrofuncionario c"),
-    @NamedQuery(name = "Cadastrofuncionario.findById", query = "SELECT c FROM Cadastrofuncionario c WHERE c.id = :id"),
-    @NamedQuery(name = "Cadastrofuncionario.findByCpf", query = "SELECT c FROM Cadastrofuncionario c WHERE c.cpf = :cpf"),
-    @NamedQuery(name = "Cadastrofuncionario.findByNome", query = "SELECT c FROM Cadastrofuncionario c WHERE c.nome = :nome"),
-    @NamedQuery(name = "Cadastrofuncionario.findByCargo", query = "SELECT c FROM Cadastrofuncionario c WHERE c.cargo = :cargo"),
-    @NamedQuery(name = "Cadastrofuncionario.findByEmail", query = "SELECT c FROM Cadastrofuncionario c WHERE c.email = :email"),
-    @NamedQuery(name = "Cadastrofuncionario.findByCelular", query = "SELECT c FROM Cadastrofuncionario c WHERE c.celular = :celular")})
-public class Cadastrofuncionario implements Serializable {
+    @NamedQuery(name = "Cadfuncionario.findAll", query = "SELECT c FROM Cadfuncionario c"),
+    @NamedQuery(name = "Cadfuncionario.findByCpf", query = "SELECT c FROM Cadfuncionario c WHERE c.cpf = :cpf"),
+    @NamedQuery(name = "Cadfuncionario.findByNome", query = "SELECT c FROM Cadfuncionario c WHERE c.nome = :nome"),
+    @NamedQuery(name = "Cadfuncionario.findByCargo", query = "SELECT c FROM Cadfuncionario c WHERE c.cargo = :cargo"),
+    @NamedQuery(name = "Cadfuncionario.findByEmail", query = "SELECT c FROM Cadfuncionario c WHERE c.email = :email"),
+    @NamedQuery(name = "Cadfuncionario.findByCelular", query = "SELECT c FROM Cadfuncionario c WHERE c.celular = :celular")})
+public class Cadfuncionario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
     @Basic(optional = false)
     @Column(name = "cpf")
-    private int cpf;
+    private String cpf;
+    @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
+    @Basic(optional = false)
     @Column(name = "cargo")
     private String cargo;
     @Column(name = "email")
@@ -52,31 +47,24 @@ public class Cadastrofuncionario implements Serializable {
     @Column(name = "celular")
     private String celular;
 
-    public Cadastrofuncionario() {
+    public Cadfuncionario() {
     }
 
-    public Cadastrofuncionario(Integer id) {
-        this.id = id;
-    }
-
-    public Cadastrofuncionario(Integer id, int cpf) {
-        this.id = id;
+    public Cadfuncionario(String cpf) {
         this.cpf = cpf;
     }
 
-    public Integer getId() {
-        return id;
+    public Cadfuncionario(String cpf, String nome, String cargo) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.cargo = cargo;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
@@ -115,18 +103,18 @@ public class Cadastrofuncionario implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (cpf != null ? cpf.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cadastrofuncionario)) {
+        if (!(object instanceof Cadfuncionario)) {
             return false;
         }
-        Cadastrofuncionario other = (Cadastrofuncionario) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        Cadfuncionario other = (Cadfuncionario) object;
+        if ((this.cpf == null && other.cpf != null) || (this.cpf != null && !this.cpf.equals(other.cpf))) {
             return false;
         }
         return true;
@@ -134,7 +122,7 @@ public class Cadastrofuncionario implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.hospital.model.Cadastrofuncionario[ id=" + id + " ]";
+        return "br.com.hospital.model.Cadfuncionario[ cpf=" + cpf + " ]";
     }
     
 }

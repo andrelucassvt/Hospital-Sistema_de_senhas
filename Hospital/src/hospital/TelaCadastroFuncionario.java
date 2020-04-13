@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.com.hospital.Connection.ConnectionFactory;
-import br.com.hospital.model.Cadastrofuncionario;
+import br.com.hospital.model.Cadfuncionario;
 
 
 /**
@@ -53,11 +53,11 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
-        cpf = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
-        celular = new javax.swing.JTextField();
         cargo = new javax.swing.JComboBox<>();
         btCadastrar = new javax.swing.JButton();
+        cpf = new javax.swing.JFormattedTextField();
+        celular = new javax.swing.JFormattedTextField();
 
         setClosable(true);
         setTitle("Cadastro do funcionario");
@@ -79,11 +79,7 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
 
         nome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        cpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        celular.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Atendente", "Enfermeiro(a)", "Limpeza", "Médico (Clínico Geral)", "Médico (Oftamologista)", "Médico (Pediatra)", "Médico (Fisioterapeuta)", "Médico (Cirurgião plástico)" }));
 
@@ -92,6 +88,25 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
         btCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastrarActionPerformed(evt);
+            }
+        });
+
+        try {
+            cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        cpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        try {
+            celular.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        celular.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        celular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                celularActionPerformed(evt);
             }
         });
 
@@ -109,22 +124,22 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(celular, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                            .addComponent(celular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                             .addComponent(nome, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cpf, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cpf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,6 +153,7 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
                 .addGap(9, 9, 9)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(3, 3, 3)
                         .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3))
@@ -151,7 +167,7 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(celular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(btCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -174,43 +190,49 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
         
         //Conexão com banco
         EntityManager am = new ConnectionFactory().getConnection();
-        Cadastrofuncionario cadastroFuncinario = new Cadastrofuncionario();
-        //Adicionando valores
+        Cadfuncionario cadFuncionario = new Cadfuncionario();
         
+        //Adicionando dados
         try{
-        
-        cadastroFuncinario.setNome(this.nome.getText());
-        cadastroFuncinario.setCpf(Integer.parseInt(this.cpf.getText()));
-        cadastroFuncinario.setCargo((String) this.cargo.getSelectedItem());
-        cadastroFuncinario.setEmail(this.email.getText());
-        cadastroFuncinario.setCelular(this.celular.getText());
+        cadFuncionario.setNome(this.nome.getText().toUpperCase());
+        cadFuncionario.setCpf(this.cpf.getText());
+        cadFuncionario.setCargo((String)this.cargo.getSelectedItem());
+        cadFuncionario.setEmail(this.email.getText());
+        cadFuncionario.setCelular(this.celular.getText());
         
         am.getTransaction().begin();
-        am.persist(cadastroFuncinario);
+        am.persist(cadFuncionario);
         am.getTransaction().commit();
         
-        JOptionPane.showMessageDialog(null, "Funcionario Cadastrado");
+        JOptionPane.showMessageDialog(null, "Dados adicionados");
+        
         }catch(Exception e){
             e.getStackTrace();
-            JOptionPane.showMessageDialog(null, "Falha na conexão", "ERRO", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro de conexão","ERRO", JOptionPane.ERROR_MESSAGE);
         }finally{
             am.close();
+            
+            this.nome.setText("");
+            this.cpf.setText("");
+            this.email.setText("");
+            this.celular.setText("");
         }
         
-        //Resetando tudo
-        this.nome.setText("");
-        this.cpf.setText("");
-        this.celular.setText("");
-        this.email.setText("");
+        
+        
     }//GEN-LAST:event_btCadastrarActionPerformed
+
+    private void celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_celularActionPerformed
     
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastrar;
     private javax.swing.JComboBox<String> cargo;
-    private javax.swing.JTextField celular;
-    private javax.swing.JTextField cpf;
+    private javax.swing.JFormattedTextField celular;
+    private javax.swing.JFormattedTextField cpf;
     private javax.swing.JTextField email;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
