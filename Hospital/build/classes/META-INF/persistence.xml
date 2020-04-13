@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>br.com.hospital.model.Cadastrofuncionario</class>
     <class>br.com.hospital.model.Cadfuncionario</class>
+    <class>br.com.hospital.model.Cadcliente</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/CadastroHospital"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
