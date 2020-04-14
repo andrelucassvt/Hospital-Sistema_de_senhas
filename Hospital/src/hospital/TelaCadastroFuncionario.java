@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import br.com.hospital.Connection.ConnectionFactory;
+import br.com.hospital.Connection.FuncionarioDAO;
 import br.com.hospital.model.Cadfuncionario;
 import java.awt.event.KeyEvent;
 
@@ -195,34 +196,24 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         
         //Conexão com banco
-        EntityManager am = new ConnectionFactory().getConnection();
+        FuncionarioDAO dao = new FuncionarioDAO();
         Cadfuncionario cadFuncionario = new Cadfuncionario();
         
         //Adicionando dados
-        try{
         cadFuncionario.setNome(this.nome.getText().toUpperCase());
         cadFuncionario.setCpf(this.cpf.getText());
         cadFuncionario.setCargo((String)this.cargo.getSelectedItem());
         cadFuncionario.setEmail(this.email.getText());
         cadFuncionario.setCelular(this.celular.getText());
         
-        am.getTransaction().begin();
-        am.persist(cadFuncionario);
-        am.getTransaction().commit();
-        
-        JOptionPane.showMessageDialog(null, "Dados adicionados");
-        
-        }catch(Exception e){
-            e.getStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro de conexão","ERRO", JOptionPane.ERROR_MESSAGE);
-        }finally{
-            am.close();
+        //Salva os dados
+        dao.salvar(cadFuncionario);
             
-            this.nome.setText("");
-            this.cpf.setText("");
-            this.email.setText("");
-            this.celular.setText("");
-        }
+        this.nome.setText("");
+        this.cpf.setText("");
+        this.email.setText("");
+        this.celular.setText("");
+        
         
         
         

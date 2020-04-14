@@ -5,6 +5,7 @@
  */
 package hospital;
 
+import br.com.hospital.Connection.ClienteDAO;
 import br.com.hospital.Connection.ConnectionFactory;
 import br.com.hospital.model.Cadcliente;
 import java.awt.event.KeyEvent;
@@ -254,10 +255,9 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        EntityManager am = new ConnectionFactory().getConnection();
+        ClienteDAO dao = new ClienteDAO();
         Cadcliente cadCliente = new Cadcliente();
         
-        try{
             cadCliente.setNome(this.nome.getText().toUpperCase());
             cadCliente.setCpf(this.cpf.getText());
             cadCliente.setDatanascimento(this.nascimento.getText());
@@ -268,24 +268,16 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
             cadCliente.setTipoplano((String)this.plano.getSelectedItem());
             cadCliente.setEmail(this.email.getText());
             
-            am.getTransaction().begin();
-            am.persist(cadCliente);
-            am.getTransaction().commit();
+            //Salva os dados
+            dao.salvar(cadCliente);
             
-            JOptionPane.showMessageDialog(null, "Cliente cadastrado");
-            
-        }catch(Exception e){
-            e.getStackTrace();
-            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO", JOptionPane.ERROR_MESSAGE);
-        }finally{
-            am.close();
             this.nome.setText("");
             this.cpf.setText("");
             this.nascimento.setText("");
             this.telefone.setText("");
             this.email.setText("");
             this.celular.setText("");
-        }
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

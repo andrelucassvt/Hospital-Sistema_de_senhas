@@ -5,6 +5,11 @@
  */
 package hospital;
 
+import br.com.hospital.Connection.FuncionarioDAO;
+import br.com.hospital.model.Cadcliente;
+import br.com.hospital.model.Cadfuncionario;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,15 +19,41 @@ import javax.swing.table.DefaultTableModel;
  * @author andre
  */
 public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
-
+    
+    
     /**
      * Creates new form ListaDeFuncionarios
      */
     public ListaDeFuncionarios() {
         initComponents();
-       
+     
+     FuncionarioDAO fdao = new FuncionarioDAO();
+        
+     List<Cadfuncionario> listaFuncio = new ArrayList<>();
+        for (Cadfuncionario listaFuncionario : fdao.getTodosFuncionariosDAO()){
+            
+         listaFuncio.add(listaFuncionario);   
+            this.AdicionarNaTabela(listaFuncio);
+        }
     }
    
+   private void AdicionarNaTabela(List<Cadfuncionario> listaFuncionario){
+        
+        DefaultTableModel tabela = new DefaultTableModel();
+        this.tabelaFuncionario.setModel(tabela);
+        
+        for (Cadfuncionario cadfuncionario : listaFuncionario) {
+            tabela.addRow(
+                    new Object[]{
+                        cadfuncionario.getNome(),
+                        cadfuncionario.getCpf(),
+                        cadfuncionario.getCargo()
+                    }
+            );
+            
+        }
+        
+    }
   
     
     /**
