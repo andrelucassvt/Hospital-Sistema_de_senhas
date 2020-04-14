@@ -308,9 +308,39 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
     private void emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailKeyPressed
         // TODO add your handling code here:
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+               
+        EntityManager am = new ConnectionFactory().getConnection();
+        Cadcliente cadCliente = new Cadcliente();
+        
+        try{
+            cadCliente.setNome(this.nome.getText().toUpperCase());
+            cadCliente.setCpf(this.cpf.getText());
+            cadCliente.setDatanascimento(this.nascimento.getText());
+            cadCliente.setSexo((String)this.sexo.getSelectedItem());
             
+            cadCliente.setTelefone(this.telefone.getText());
+            cadCliente.setCelular(this.celular.getText());
+            cadCliente.setTipoplano((String)this.plano.getSelectedItem());
+            cadCliente.setEmail(this.email.getText());
             
-            JOptionPane.showMessageDialog(null, "Cadastrado");
+            am.getTransaction().begin();
+            am.persist(cadCliente);
+            am.getTransaction().commit();
+            
+            JOptionPane.showMessageDialog(null, "Cliente cadastrado");
+            
+        }catch(Exception e){
+            e.getStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro na conexão", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            am.close();
+            this.nome.setText("");
+            this.cpf.setText("");
+            this.nascimento.setText("");
+            this.telefone.setText("");
+            this.email.setText("");
+            this.celular.setText("");
+        }
         }
     }//GEN-LAST:event_emailKeyPressed
 

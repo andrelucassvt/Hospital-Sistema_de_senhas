@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import br.com.hospital.Connection.ConnectionFactory;
 import br.com.hospital.model.Cadfuncionario;
+import java.awt.event.KeyEvent;
 
 
 /**
@@ -107,6 +108,11 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
         celular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 celularActionPerformed(evt);
+            }
+        });
+        celular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                celularKeyPressed(evt);
             }
         });
 
@@ -225,6 +231,44 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
     private void celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celularActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_celularActionPerformed
+
+    private void celularKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_celularKeyPressed
+        // TODO add your handling code here:
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            
+              //Conexão com banco
+        EntityManager am = new ConnectionFactory().getConnection();
+        Cadfuncionario cadFuncionario = new Cadfuncionario();
+        
+        //Adicionando dados
+        try{
+        cadFuncionario.setNome(this.nome.getText().toUpperCase());
+        cadFuncionario.setCpf(this.cpf.getText());
+        cadFuncionario.setCargo((String)this.cargo.getSelectedItem());
+        cadFuncionario.setEmail(this.email.getText());
+        cadFuncionario.setCelular(this.celular.getText());
+        
+        am.getTransaction().begin();
+        am.persist(cadFuncionario);
+        am.getTransaction().commit();
+        
+        JOptionPane.showMessageDialog(null, "Dados adicionados");
+        
+        }catch(Exception e){
+            e.getStackTrace();
+            JOptionPane.showMessageDialog(null, "Erro de conexão","ERRO", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            am.close();
+            
+            this.nome.setText("");
+            this.cpf.setText("");
+            this.email.setText("");
+            this.celular.setText("");
+        }
+        }
+       
+    }//GEN-LAST:event_celularKeyPressed
     
     
     
