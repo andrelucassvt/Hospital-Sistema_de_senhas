@@ -6,6 +6,8 @@
 package br.com.hospital.Connection;
 
 import br.com.hospital.model.Cadcliente;
+import hospital.TelaPrincipal;
+import java.awt.Color;
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 
@@ -15,6 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class ClienteDAO {
     
+private String validacaoDAO;
+
     public Cadcliente salvar(Cadcliente cliente){
         EntityManager am = new ConnectionFactory().getConnection();
         
@@ -34,5 +38,44 @@ public class ClienteDAO {
         
         return cliente;
     }
+    
+    
+    public Cadcliente ChamarPorCpf(String cpf){  
+       EntityManager am = new ConnectionFactory().getConnection();  
+       Cadcliente cliente = null;
+       TelaPrincipal telaPrincipal = new TelaPrincipal();
+        try {
+            
+           cliente = am.find(Cadcliente.class, cpf);
+           
+        } catch (Exception e){
+            
+            e.getStackTrace();
+            System.out.println(e.getMessage());
+            
+        }finally{
+            if(cliente != null){
+                 this.setValidacaoDAO("Cliente cadastrado");
+            }else{
+                this.setValidacaoDAO("Cliente não cadastrado");
+            }
+            am.close();
+        }
+        
+        
+        return cliente;
+    }
+
+    public String getValidacaoDAO() {
+        return validacaoDAO;
+    }
+
+    public void setValidacaoDAO(String validacaoDAO) {
+        this.validacaoDAO = validacaoDAO;
+    }
+    
+
+    
+    
     
 }

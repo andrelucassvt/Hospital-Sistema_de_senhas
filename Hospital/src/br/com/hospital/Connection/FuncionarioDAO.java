@@ -45,9 +45,6 @@ public class FuncionarioDAO {
         try{
                 
             listaFuncionarios = am.createQuery("from Cadfuncionario c").getResultList();
-            
-            
-            
         }catch(Exception e){
             e.getStackTrace();
         }finally{
