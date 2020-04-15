@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
  * @author andre
  */
 public class ClienteDAO {
-    
+//Variavél que armazena o resultado se o cliente está ou não cadastrado
+//Para mostrar na tela principal
 private String validacaoDAO;
 
     public Cadcliente salvar(Cadcliente cliente){
@@ -39,8 +40,8 @@ private String validacaoDAO;
         return cliente;
     }
     
-    
-    public Cadcliente ChamarPorCpf(String cpf){  
+    //Chamar por chave primaria
+    public Cadcliente getChamarPorCpf(String cpf){  
        EntityManager am = new ConnectionFactory().getConnection();  
        Cadcliente cliente = null;
        TelaPrincipal telaPrincipal = new TelaPrincipal();
@@ -50,8 +51,8 @@ private String validacaoDAO;
            
         } catch (Exception e){
             
-            e.getStackTrace();
-            System.out.println(e.getMessage());
+             am.getTransaction().rollback();
+             JOptionPane.showMessageDialog(null, "Erro de conexão","ERRO", JOptionPane.ERROR_MESSAGE);
             
         }finally{
             if(cliente != null){
@@ -61,11 +62,54 @@ private String validacaoDAO;
             }
             am.close();
         }
-        
-        
         return cliente;
     }
-
+    
+    
+    public void getAtualizarRegistro(String cpf){
+        
+        EntityManager am = new ConnectionFactory().getConnection();
+        
+        try {
+            Cadcliente cliente = am.find(Cadcliente.class,cpf);
+            //Aqui você colocar oque que atualizar
+            
+            //Fim
+            am.getTransaction().begin();
+            am.merge(cliente);
+            am.getTransaction().commit();
+            
+        } catch (Exception e) {
+            am.getTransaction().rollback();
+            JOptionPane.showMessageDialog(null, "Erro de conexão","ERRO", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            am.close();
+        }
+        
+    }
+    
+    
+    public void getRemoverRegistro(String cpf){
+        
+        EntityManager am = new ConnectionFactory().getConnection();
+        
+        try {
+            Cadcliente cliente = am.find(Cadcliente.class, cpf);
+            
+            am.getTransaction().begin();
+            am.remove(cliente);
+            am.getTransaction().commit();
+            
+            
+        } catch (Exception e){
+             am.getTransaction().rollback();
+             JOptionPane.showMessageDialog(null, "Erro de conexão","ERRO", JOptionPane.ERROR_MESSAGE);
+        }finally{
+            am.close();
+        }
+        
+        
+    }
     public String getValidacaoDAO() {
         return validacaoDAO;
     }
