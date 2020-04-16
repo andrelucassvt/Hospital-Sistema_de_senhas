@@ -41,7 +41,7 @@ private String validacaoDAO;
     }
     
     //Chamar por chave primaria
-    public Cadcliente getChamarPorCpf(String cpf){  
+    public Cadcliente getFind(String cpf){  
        EntityManager am = new ConnectionFactory().getConnection();  
        Cadcliente cliente = null;
        TelaPrincipal telaPrincipal = new TelaPrincipal();

@@ -6,6 +6,7 @@
 package DisponibilidadeMedicos;
 
 import hospital.TelaPrincipal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,7 +34,7 @@ public class Disponibilidade {
     
     public void AnalisarVagas(String combox){
         
-        if(combox.equalsIgnoreCase("clinico geral")){
+        if(combox.equalsIgnoreCase("clínico geral")){
             this.setMostrarVagas(String.valueOf(this.getClinicoGeral()));
             
         }else if(combox.equalsIgnoreCase("pediatra")){
@@ -49,10 +50,43 @@ public class Disponibilidade {
             this.setMostrarVagas(String.valueOf(this.getCirurgiaoPlastico()));
         } 
         
-        
-        
     }
-
+    
+     public void AnalisarVagasEMarcar(String combox){
+        
+        if(combox.equalsIgnoreCase("clínico geral")){
+            this.ClinicoGeral = this.getClinicoGeral() -1;
+            this.setMostrarVagas(String.valueOf(this.getClinicoGeral()));
+            if(this.ClinicoGeral ==0){
+                JOptionPane.showMessageDialog(null, "Sem vagas");
+            }
+        }else if(combox.equalsIgnoreCase("pediatra")){
+            this.setMostrarVagas(String.valueOf(this.getPediatra()));
+            this.Pediatra = this.Pediatra -1;
+            if(this.Pediatra ==0){
+                JOptionPane.showMessageDialog(null, "Sem vagas");
+            }
+        }else if(combox.equalsIgnoreCase("fisioterapeuta")){
+            this.setMostrarVagas(String.valueOf(this.getFisioterapeuta()));
+            this.Fisioterapeuta = this.Fisioterapeuta -1;
+            if(this.Fisioterapeuta == 0){
+                JOptionPane.showMessageDialog(null, "Sem vagas");
+            }
+        }else if(combox.equalsIgnoreCase("oftamologista")){
+            this.setMostrarVagas(String.valueOf(this.getOftamologista()));
+            this.Oftamologista = this.Oftamologista -1;
+            if(this.Oftamologista ==0){
+                JOptionPane.showMessageDialog(null, "Sem vagas");
+            }
+        }else if(combox.equalsIgnoreCase("cirurgião plástico")){
+            this.setMostrarVagas(String.valueOf(this.getCirurgiaoPlastico()));
+            this.CirurgiaoPlastico = this.CirurgiaoPlastico -1;
+            if(this.CirurgiaoPlastico ==0){
+                JOptionPane.showMessageDialog(null, "Sem vagas");
+            }
+            
+        } 
+     }
     public String getMostrarVagas() {
         return MostrarVagas;
     }
