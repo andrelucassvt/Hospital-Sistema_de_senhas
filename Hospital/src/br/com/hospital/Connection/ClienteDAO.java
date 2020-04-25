@@ -6,8 +6,9 @@
 package br.com.hospital.Connection;
 
 import br.com.hospital.model.Cadcliente;
-import hospital.TelaPrincipal;
+import View.TelaPrincipal;
 import java.awt.Color;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.swing.JOptionPane;
 
@@ -20,7 +21,7 @@ public class ClienteDAO {
 //Para mostrar na tela principal
 private String validacaoDAO;
 
-    public Cadcliente salvar(Cadcliente cliente){
+    public Cadcliente getSalvar(Cadcliente cliente){
         EntityManager am = new ConnectionFactory().getConnection();
         
         try{
@@ -41,7 +42,7 @@ private String validacaoDAO;
     }
     
     //Chamar por chave primaria
-    public Cadcliente getFind(String cpf){  
+    public Cadcliente getBuscar(String cpf){  
        EntityManager am = new ConnectionFactory().getConnection();  
        Cadcliente cliente = null;
        TelaPrincipal telaPrincipal = new TelaPrincipal();
@@ -119,7 +120,25 @@ private String validacaoDAO;
     }
     
 
-    
+    public List<Cadcliente>getTodosClientes(){
+     EntityManager am = new ConnectionFactory().getConnection();
+     
+     List<Cadcliente> listaClientes = null;
+     
+        try {
+            
+            listaClientes = am.createQuery("from Cadcliente c").getResultList();
+            
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally{
+            am.close();
+        }
+        
+        return listaClientes;
+        
+    }
     
     
 }

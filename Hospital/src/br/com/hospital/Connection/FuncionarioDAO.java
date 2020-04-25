@@ -8,7 +8,12 @@ package br.com.hospital.Connection;
 import br.com.hospital.model.Cadfuncionario;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.swing.JOptionPane;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 
 /**
  *
@@ -17,7 +22,7 @@ import javax.swing.JOptionPane;
 public class FuncionarioDAO {
     
     
-    public Cadfuncionario salvar(Cadfuncionario funcionario){
+    public Cadfuncionario getSalvar(Cadfuncionario funcionario){
         EntityManager am = new ConnectionFactory().getConnection();
         
         try{
@@ -38,20 +43,21 @@ public class FuncionarioDAO {
     }
     
     public List<Cadfuncionario> getTodosFuncionariosDAO(){
-        EntityManager am = new ConnectionFactory().getConnection();
-         
-        List<Cadfuncionario> listaFuncionarios = null;
-        
-        try{
-                
-            listaFuncionarios = am.createQuery("from Cadfuncionario c").getResultList();
-        }catch(Exception e){
-            e.getStackTrace();
+      EntityManager am = new ConnectionFactory().getConnection();
+      
+      List<Cadfuncionario> lista = null;
+      
+        try {
+            
+            lista = am.createQuery("from Cadfuncionario f").getResultList();
+            
+            
+        } catch (Exception e) {
+            System.out.println(e);
         }finally{
             am.close();
         }
-        return listaFuncionarios;
-        
+        return lista;
     }
     
 }

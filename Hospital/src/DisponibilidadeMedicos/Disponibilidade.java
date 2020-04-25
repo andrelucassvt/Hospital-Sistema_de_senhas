@@ -5,7 +5,7 @@
  */
 package DisponibilidadeMedicos;
 
-import hospital.TelaPrincipal;
+import View.TelaPrincipal;
 import javax.swing.JOptionPane;
 
 /**
