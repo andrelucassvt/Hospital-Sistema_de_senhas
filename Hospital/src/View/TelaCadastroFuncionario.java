@@ -32,7 +32,7 @@ public class TelaCadastroFuncionario extends javax.swing.JInternalFrame {
      *
      * @param telaPrincipal
      */
-    public TelaCadastroFuncionario(TelaPrincipal telaPrincipal) {
+    public TelaCadastroFuncionario() {
         initComponents();
         
     }
