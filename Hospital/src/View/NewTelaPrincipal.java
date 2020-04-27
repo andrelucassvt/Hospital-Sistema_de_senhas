@@ -5,20 +5,20 @@
  */
 package View;
 
-import DisponibilidadeMedicos.Disponibilidade;
 import br.com.hospital.Connection.ClienteDAO;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author andre
  */
-public class NewTelaPrincipal extends javax.swing.JFrame {
+public class NewTelaPrincipal extends javax.swing.JFrame{
 
     /**
      * Creates new form NewTelaPrincipal
@@ -515,6 +515,11 @@ public class NewTelaPrincipal extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        MarcarCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MarcarCPFActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -620,13 +625,98 @@ public class NewTelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     //Atributos de disponibilidade dos medicos
-    private int ClinicoGeral = 10;
-    private int Pediatra = 10;
-    private int Fisioterapeuta = 10;
-    private int Oftamologista = 10;
-    private int CirurgiaoPlastico = 5;
-
+    public int ClinicoGeral = 10;
+    public int Pediatra = 10;
+    public int Fisioterapeuta = 10;
+    public int Oftamologista = 10;
+    public int CirurgiaoPlastico = 5;
     
+    ////////////////////////////////////////////////////
+    public void AnalisarVagas(String ComboBox){
+         if(ComboBox.equalsIgnoreCase("Clínico Geral")){
+            if(this.ClinicoGeral == 0){
+                ResultadoVagas.setText("Sem vagas");
+            }else{
+            ResultadoVagas.setText(String.valueOf(this.ClinicoGeral));
+            }
+            
+        }else if(ComboBox.equalsIgnoreCase("Pediatra")){
+            if(this.Pediatra == 0){
+                ResultadoVagas.setText("Sem vagas");
+            }else{
+                ResultadoVagas.setText(String.valueOf(this.Pediatra));
+            }
+            
+        }else if(ComboBox.equalsIgnoreCase("Fisioterapeuta")){
+            if(this.Fisioterapeuta == 0){
+                ResultadoVagas.setText("Sem vagas");   
+            }else{
+            ResultadoVagas.setText(String.valueOf(this.Fisioterapeuta));
+            }
+            
+        }else if(ComboBox.equalsIgnoreCase("Oftamologista")){
+            if(this.Oftamologista == 0){
+                ResultadoVagas.setText("Sem vagas");
+            }else{
+            ResultadoVagas.setText(String.valueOf(this.Oftamologista));  
+            }
+            
+        }else if(ComboBox.equalsIgnoreCase("Cirurgião plástico")){
+            if(this.CirurgiaoPlastico == 0){
+                ResultadoVagas.setText("Sem vagas");
+            }else{
+            ResultadoVagas.setText(String.valueOf(this.CirurgiaoPlastico));
+            }
+        }
+    }
+    public void AnalisarMarcar(String ComboBox,String cpf){
+        ClienteDAO cdao = new ClienteDAO();
+        cdao.getBuscar(cpf);
+        if(cdao.getValidacaoDAO().equalsIgnoreCase("Cadastrado")){
+            
+           if(ComboBox.equalsIgnoreCase("Clínico Geral")){
+               if(this.ClinicoGeral == 0){
+                   JOptionPane.showMessageDialog(null, "Sem Vaga");
+               }else{
+                this.ClinicoGeral = this.ClinicoGeral - 1;
+                JOptionPane.showMessageDialog(null, "Cadastrado");
+               } 
+            }else if(ComboBox.equalsIgnoreCase("Pediatra")){
+               if(this.Pediatra == 0){
+                   JOptionPane.showMessageDialog(null, "Sem Vaga");
+               }else{
+                this.Pediatra = this.Pediatra - 1;
+                JOptionPane.showMessageDialog(null, "Cadastrado");
+               }
+            }else if(ComboBox.equalsIgnoreCase("Fisioterapeuta")){
+               if(this.Fisioterapeuta == 0){
+                   JOptionPane.showMessageDialog(null, "Sem Vaga");
+               }else{
+                this.Fisioterapeuta = this.Fisioterapeuta - 1;
+                JOptionPane.showMessageDialog(null, "Cadastrado");
+               }
+
+            }else if(ComboBox.equalsIgnoreCase("Oftamologista")){
+                if(this.Oftamologista == 0){
+                   JOptionPane.showMessageDialog(null, "Sem Vaga");
+                }else{
+                 this.Oftamologista = this.Oftamologista - 1;
+                 JOptionPane.showMessageDialog(null, "Cadastrado");
+                } 
+
+            }else if(ComboBox.equalsIgnoreCase("Cirurgião plástico")){
+                if(this.CirurgiaoPlastico == 0){
+                   JOptionPane.showMessageDialog(null, "Sem Vaga");
+                }else{
+                 this.CirurgiaoPlastico = this.CirurgiaoPlastico - 1;
+                 JOptionPane.showMessageDialog(null, "Cadastrado");
+                } 
+            }  
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuário não cadastrado");
+        }
+    }
+    //////////////////////////////////////////////////
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     TelaCadastroFuncionario telaCadFuncionario = new TelaCadastroFuncionario();
@@ -684,10 +774,7 @@ public class NewTelaPrincipal extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        Disponibilidade dis = new Disponibilidade();
-        dis.AnalisarVagas((String)this.disponibilidadeMedico.getSelectedItem());
-        this.ResultadoVagas.setText(dis.getMostrarVagas());
-
+        this.AnalisarVagas((String)this.disponibilidadeMedico.getSelectedItem());
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void MarcarNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcarNomeActionPerformed
@@ -696,16 +783,8 @@ public class NewTelaPrincipal extends javax.swing.JFrame {
   
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-        ClienteDAO clienteDao = new ClienteDAO();
-        Disponibilidade disponibilidade = new Disponibilidade();
-        
-        clienteDao.getBuscar(this.MarcarCPF.getText());
-        
-        if(clienteDao.getValidacaoDAO().equalsIgnoreCase("Cliente cadastrado")){
-         disponibilidade.AnalisarVagasEMarcar((String)this.MarcarMedico.getSelectedItem());
-         this.ResultadoVagas.setText(disponibilidade.getMostrarVagas());
-         JOptionPane.showMessageDialog(null,"Cliente cadastrado");
-        }
+      this.AnalisarMarcar((String)this.MarcarMedico.getSelectedItem(),
+              this.MarcarCPF.getText());
        
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -786,6 +865,10 @@ public class NewTelaPrincipal extends javax.swing.JFrame {
             quantidadeDeClics = 0;
         }
     }//GEN-LAST:event_btActionPerformed
+
+    private void MarcarCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcarCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MarcarCPFActionPerformed
 
     /**
      * @param args the command line arguments

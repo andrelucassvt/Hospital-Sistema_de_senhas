@@ -57,11 +57,12 @@ private String validacaoDAO;
             
         }finally{
             if(cliente != null){
-                 this.setValidacaoDAO("Cliente cadastrado");
+                this.setValidacaoDAO("Cadastrado");
+                am.close();
             }else{
-                this.setValidacaoDAO("Cliente não cadastrado");
+                this.setValidacaoDAO("NaoCad");
+                am.close();
             }
-            am.close();
         }
         return cliente;
     }
