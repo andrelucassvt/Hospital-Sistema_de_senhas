@@ -27,6 +27,29 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
     public ListaDeFuncionarios() {
         initComponents();
         
+         FuncionarioDAO fdao = new FuncionarioDAO();
+        
+        DefaultTableModel tabela = new DefaultTableModel();
+        this.jtableFuncionario.setModel(tabela);
+        
+        tabela.addColumn("CPF");
+        tabela.addColumn("NOME");
+        tabela.addColumn("CARGO");
+        tabela.addColumn("EMAIL");
+        tabela.addColumn("CELULAR");
+        
+        for (Cadfuncionario f : fdao.getTodosFuncionariosDAO()){
+            tabela.addRow(
+                    new Object[]{
+                        f.getCpf(),
+                        f.getNome(),
+                        f.getCargo(),
+                        f.getEmail(),
+                        f.getCelular()
+                    }
+            );
+            
+        }
         
         
     };
@@ -47,7 +70,6 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtableFuncionario = new javax.swing.JTable();
 
@@ -55,14 +77,6 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Lista de funcionarios cadastrados");
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Atualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,19 +86,13 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addContainerGap(426, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jtableFuncionario.setModel(new javax.swing.table.DefaultTableModel(
@@ -118,44 +126,11 @@ public class ListaDeFuncionarios extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        
-        FuncionarioDAO fdao = new FuncionarioDAO();
-        
-        DefaultTableModel tabela = new DefaultTableModel();
-        this.jtableFuncionario.setModel(tabela);
-        
-        tabela.addColumn("CPF");
-        tabela.addColumn("NOME");
-        tabela.addColumn("CARGO");
-        tabela.addColumn("EMAIL");
-        tabela.addColumn("CELULAR");
-        
-        for (Cadfuncionario f : fdao.getTodosFuncionariosDAO()){
-            tabela.addRow(
-                    new Object[]{
-                        f.getCpf(),
-                        f.getNome(),
-                        f.getCargo(),
-                        f.getEmail(),
-                        f.getCelular()
-                    }
-            );
-            
-        }
-        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     
    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

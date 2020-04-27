@@ -21,16 +21,17 @@ public class Disponibilidade {
     private int CirurgiaoPlastico;
     
     private String MostrarVagas;
-    
-    public Disponibilidade(){
-        this.ClinicoGeral = 10;
-        this.Pediatra = 10;
-        this.Fisioterapeuta = 10;
-        this.Oftamologista = 10;
-        this.CirurgiaoPlastico = 5;
-    }
 
+    public Disponibilidade(){
+    this.ClinicoGeral = 10;
+    this.Pediatra = 10;
+    this.Fisioterapeuta= 10;
+    this.Oftamologista = 10;
+    this.CirurgiaoPlastico = 5;
     
+    }
+    
+   
     
     public void AnalisarVagas(String combox){
         
@@ -55,11 +56,13 @@ public class Disponibilidade {
      public void AnalisarVagasEMarcar(String combox){
         
         if(combox.equalsIgnoreCase("clínico geral")){
-            this.ClinicoGeral = this.getClinicoGeral() -1;
-            this.setMostrarVagas(String.valueOf(this.getClinicoGeral()));
+            this.ClinicoGeral = this.ClinicoGeral -1;    
             if(this.ClinicoGeral ==0){
                 JOptionPane.showMessageDialog(null, "Sem vagas");
+                this.setMostrarVagas(String.valueOf(this.getClinicoGeral()));
             }
+            this.setMostrarVagas(String.valueOf(this.getClinicoGeral()));
+            
         }else if(combox.equalsIgnoreCase("pediatra")){
             this.setMostrarVagas(String.valueOf(this.getPediatra()));
             this.Pediatra = this.Pediatra -1;
