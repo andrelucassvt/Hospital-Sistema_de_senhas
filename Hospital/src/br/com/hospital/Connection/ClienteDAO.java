@@ -5,8 +5,8 @@
  */
 package br.com.hospital.Connection;
 
+import View.NewTelaPrincipal;
 import br.com.hospital.model.Cadcliente;
-import View.TelaPrincipal;
 import java.awt.Color;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -45,7 +45,7 @@ private String validacaoDAO;
     public Cadcliente getBuscar(String cpf){  
        EntityManager am = new ConnectionFactory().getConnection();  
        Cadcliente cliente = null;
-       TelaPrincipal telaPrincipal = new TelaPrincipal();
+       NewTelaPrincipal telaPrincipal = new NewTelaPrincipal();
         try {
             
            cliente = am.find(Cadcliente.class, cpf);

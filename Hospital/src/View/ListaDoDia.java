@@ -19,13 +19,7 @@ public class ListaDoDia extends javax.swing.JInternalFrame {
     public ListaDoDia() {
         initComponents();
         
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        
-        DefaultTableModel tabela = (DefaultTableModel) tabelaDia.getModel();
-        Object dados[] = {telaPrincipal.getArmazenarNome(),telaPrincipal.getArmazenarMadico(),
-           telaPrincipal.getArmazenarSenha(), telaPrincipal.getArmazenarCpf()};
-        tabela.addRow(dados);
-        
+ 
         
         
     }
